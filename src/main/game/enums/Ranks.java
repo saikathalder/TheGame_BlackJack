@@ -3,7 +3,8 @@ package main.game.enums;
 import java.util.stream.Stream;
 
 /**
- * Enum for Ranks of Ranks
+ * Enum for Ranks of Cards
+ * @author Saikat
  */
 public enum Ranks {
 
@@ -25,19 +26,29 @@ public enum Ranks {
 
     private int value;
 
-    private Ranks(final String rank, final int value) {
+    Ranks(final String rank, final int value) {
         this.rank = rank;
         this.value = value;
     }
 
+    /**
+     * @param rank - rank of card
+     * @return Ranks object based on rank
+     */
     public static Ranks getRank(String rank) {
         return Stream.of(Ranks.values()).filter(rankObj -> rankObj.getRank().equalsIgnoreCase(rank)).findFirst().get();
     }
 
+    /**
+     * @return rank - rank of card
+     */
     public String getRank() {
         return rank;
     }
 
+    /**
+     * @return value - value of card
+     */
     public int getValue() {
         return value;
     }

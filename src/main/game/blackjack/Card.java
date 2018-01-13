@@ -4,7 +4,8 @@ import main.game.enums.Ranks;
 import main.game.enums.Suits;
 
 /**
- *
+ * Class defines a card with a particular suit and rank
+ * @author Saikat
  */
 public class Card {
 
@@ -12,22 +13,24 @@ public class Card {
 
     private Ranks rank;
 
-    public Card(Suits suit, Ranks rank) {
+    protected Card(Suits suit, Ranks rank) {
         this.suit = suit;
         this.rank = rank;
     }
 
+    /**
+     * @return String in a particular format
+     * mixed of suit and rank
+     */
     @Override
     public String toString() {
         return suit.getCardSuit() + rank.getRank();
     }
 
-    public Card getCard(String card) {
-        this.suit = Suits.valueOf(String.valueOf(card.charAt(0)));
-        this.rank = Ranks.valueOf(String.valueOf(card.charAt(1)));
-        return new Card(suit, rank);
-    }
-
+    /**
+     * @return Ranks - instance of Ranks
+     * getter method
+     */
     public Ranks getRank() {
         return rank;
     }

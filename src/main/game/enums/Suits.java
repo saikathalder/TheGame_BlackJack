@@ -10,14 +10,21 @@ public enum Suits {
 
     private String cardSuit;
 
-    private Suits(final String cardSuit) {
+    Suits(final String cardSuit) {
         this.cardSuit = cardSuit;
     }
 
+    /**
+     * @param cardSuit - cardSuit value
+     * @return Suits instance
+     */
     public static Suits getSuit(String cardSuit) {
         return Stream.of(Suits.values()).filter(suit -> suit.getCardSuit().equalsIgnoreCase(cardSuit)).findFirst().get();
     }
 
+    /**
+     * @return cardSuit - getter method
+     */
     public String getCardSuit() {
         return cardSuit;
     }

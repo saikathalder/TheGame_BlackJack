@@ -1,17 +1,19 @@
 package main.game.blackjack;
 
 import main.game.constants.BlackJackConstants;
-import main.game.enums.Ranks;
-import main.game.enums.Suits;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class BlackJackRuleExecutor {
+/**
+ * Class to implement BlackJack rules and decide winner
+ * @author Saikat
+ */
+public class BlackJackRule {
 
     /**
-     * @param players
-     * @return
+     * @param players - list of players
+     * @return person - winner
+     * Method to decide winner based on score and set of game rules
      */
     public static Person implementBlackJackRules(List<Person> players, Deck deck) {
         int highestPersonCardValue = 0;
@@ -19,23 +21,33 @@ public class BlackJackRuleExecutor {
         boolean isBlackJack = false;
         for (Person person : players) {
             int personCardValue = person.getHand().calculateTotal();
+            // If both player got blackjack, Sam is winner
+            //If either one of the player got blackjack, that player will be winner
             if (!isBlackJack && personCardValue == BlackJackConstants.BLACKJACK) {
                 winner = person;
                 isBlackJack = true;
+                continue;
             }
+            // If both player got highest hand(22(A+A)), dealer is the winner
             if (personCardValue == BlackJackConstants.HIGHEST_CARD_VALUE) {
                 winner = person;
+                highestPersonCardValue = personCardValue;
             }
+
+            // If player got hand less than 17, sam starts draw next card until reaches 17 or higher
+            // After sam, dealer draw next card until dealer reaches equal or less than sam
             if (personCardValue < BlackJackConstants.STOP_DRAW_CARD_VALUE) {
                 while (personCardValue < BlackJackConstants.STOP_DRAW_CARD_VALUE) {
-                    person.receiveCard(deck.drawNextCard());
+                    Card card = deck.drawNextCard();
+                    person.receiveCard(card);
                     personCardValue = person.getHand().calculateTotal();
+                    System.out.println(person.getPlayerName() + " draw next card: "+ card);
                 }
                 if (personCardValue <= BlackJackConstants.BLACKJACK && personCardValue > highestPersonCardValue) {
                     winner = person;
                     highestPersonCardValue = personCardValue;
                 }
-            } else {
+            } else if(personCardValue < BlackJackConstants.BLACKJACK){ // Else, player who got more value card, is the winner
                 if (personCardValue > highestPersonCardValue) {
                     highestPersonCardValue = personCardValue;
                     winner = person;
@@ -45,21 +57,4 @@ public class BlackJackRuleExecutor {
         return winner;
     }
 
-    public static void main(String[] args) {
-        Person person = new Person(BlackJackConstants.PLAYER1_NAME, new Hand());
-        person.receiveCard(new Card(Suits.Clubs, Ranks.FIVE));
-        person.receiveCard(new Card(Suits.Clubs, Ranks.TWO));
-
-        Person person2 = new Person(BlackJackConstants.PLAYER2_NAME, new Hand());
-        person2.receiveCard(new Card(Suits.Clubs, Ranks.SEVEN));
-        person2.receiveCard(new Card(Suits.Clubs, Ranks.EIGHT));
-
-        List<Person> personList = new ArrayList<>();
-        personList.add(person);
-        personList.add(person2);
-        Deck deck = new Deck();
-        deck.createUniqueDeck();
-        Person winner = implementBlackJackRules(personList, deck);
-        System.out.println(winner.getPlayerName());
-    }
 }
