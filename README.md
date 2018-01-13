@@ -2,8 +2,10 @@
 This project contains the implementation of Black Jack game.
 
 #Requirements
+
 Can you beat the dealer at 21?
 Model the game
+
 • create a single deck of playing cards
 • two players (called Sam and the Dealer) who will play against each other
 • each player is given two cards from the top of a shuffled deck of cards. Cards
@@ -65,9 +67,12 @@ The solution should include tests.
 Java 8
 
 # How to run
-jar is available in the target folder
+jar is available in the jar folder
 From command prompt, please go to target folder and execute below command
+
 java -jar TheGame_BlackJack.jar
+
 or
-TheGame_BlackJack.jar <path of the file name>
+
+java -jar TheGame_BlackJack.jar <path of the file name>
 
