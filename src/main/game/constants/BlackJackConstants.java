@@ -22,4 +22,6 @@ public final class BlackJackConstants {
     public static final int HIGHEST_CARD_VALUE = 22;
 
     public static final int STOP_DRAW_CARD_VALUE = 17;
+
+    public static final int TOTAL_CARD_IN_DECK = 52;
 }

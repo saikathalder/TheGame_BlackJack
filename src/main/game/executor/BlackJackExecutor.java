@@ -24,7 +24,6 @@ public class BlackJackExecutor {
         System.out.println("!! Welcome to Black Jack !!");
         System.out.println("==============================================================");
 
-        System.out.println(Suits.getSuit("C"));
         playGame(args);
 
     }

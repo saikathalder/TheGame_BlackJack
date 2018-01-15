@@ -64,7 +64,7 @@ Testing
 The solution should include tests.
 
 #Tech Stack
-Java 8
+Java 8, JUNIT 4, Mockito
 
 # How to run
 jar is available in the jar folder

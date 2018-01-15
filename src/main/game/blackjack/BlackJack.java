@@ -9,19 +9,38 @@ import java.util.List;
  */
 public class BlackJack {
 
+    private Deck deck = new Deck();
+
+    private List<Person> players = new ArrayList<>();
+
     private  BlackJack(){
         // Private Constructor so that class cannot be instantiated
     }
 
-    private Deck deck = new Deck();
-    private List<Person> players = new ArrayList<>();
+    /**
+     * @return Deck
+     * getter method
+     */
+    public Deck getDeck(){
+        return deck;
+    }
+
+    /**
+     * @return player list
+     * getter method
+     */
+    public List<Person> getPlayers() {
+        return new ArrayList<>(players);
+    }
 
     /**
      * @return instance of blackjack
      * Method to return BlackJack instance
      */
     public static BlackJack initializeBlackJack() {
-        return new BlackJack();
+        // Provision to make it singleton, so that same instance should be available
+        // Should implement based on requirement
+       return new BlackJack();
     }
 
     /**
