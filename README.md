@@ -93,7 +93,7 @@ Java 8, JUNIT 4, Mockito
 
 # How to run
 jar is available in the jar folder
-From command prompt, please go to target folder and execute below command
+From command prompt, please go to jar folder and execute below command
 
 java -jar TheGame_BlackJack.jar
 
