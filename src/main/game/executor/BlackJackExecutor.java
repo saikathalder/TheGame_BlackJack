@@ -43,11 +43,10 @@ public class BlackJackExecutor {
         }
         blackJack.addPlayers(BlackJackConstants.PLAYER1_NAME, BlackJackConstants.PLAYER2_NAME);
         blackJack.distributeCards(BlackJackConstants.INITIAL_NO_OF_CARDS_TO_DISTRIBUTE);
-        System.out.println("Showing initial hands..");
+        System.out.println("Winner is :" + blackJack.getWinner());
         System.out.println(BlackJackConstants.PLAYER1_NAME + ":" + blackJack.showHand(BlackJackConstants.PLAYER1_NAME).stream().map(Object::toString)
                 .collect(Collectors.joining(", ")));
         System.out.println(BlackJackConstants.PLAYER2_NAME + ":" + blackJack.showHand(BlackJackConstants.PLAYER2_NAME).stream().map(Object::toString)
                 .collect(Collectors.joining(", ")));
-        System.out.println("Winner is :" + blackJack.getWinner());
     }
 }

@@ -41,7 +41,6 @@ public class BlackJackRule {
                     Card card = deck.drawNextCard();
                     person.receiveCard(card);
                     personCardValue = person.getHand().calculateTotal();
-                    System.out.println(person.getPlayerName() + " draw next card: "+ card);
                 }
                 if (personCardValue <= BlackJackConstants.BLACKJACK && personCardValue > highestPersonCardValue) {
                     winner = person;
