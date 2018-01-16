@@ -2,9 +2,7 @@ package main.game.executor;
 
 import main.game.blackjack.BlackJack;
 import main.game.constants.BlackJackConstants;
-import main.game.enums.Suits;
 
-import java.io.IOException;
 import java.util.stream.Collectors;
 
 /**
@@ -17,7 +15,7 @@ public class BlackJackExecutor {
     /**
      * @param args
      * Main method to start BlackJack game
-     * @throws Exception
+     * @throws Exception -Exception can be thrown
      */
     public static void main(String[] args) throws Exception {
         System.out.println("==============================================================");
@@ -31,7 +29,7 @@ public class BlackJackExecutor {
     /**
      * @param args - this may contain fileName
      * method to play blackjack game
-     * @throws  Exception
+     * @throws  Exception -Exception can be thrown
      */
     private static void playGame(String[] args) throws Exception {
         BlackJack blackJack = BlackJack.initializeBlackJack();
@@ -41,7 +39,6 @@ public class BlackJackExecutor {
             blackJack.initializeDeck(args[0]);
         } else {
             System.out.println("No files given. New shuffled deck of unique cards will be given for playing..");
-            BlackJackExecutor blackJackExecutor = new BlackJackExecutor();
             blackJack.initializeDeck();
         }
         blackJack.addPlayers(BlackJackConstants.PLAYER1_NAME, BlackJackConstants.PLAYER2_NAME);

@@ -1,5 +1,6 @@
 package main.game.blackjack;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +57,9 @@ public class BlackJack {
      * @throws Exception - Throws exception if problem with file reading
      */
     public void initializeDeck(String fileName) throws Exception{
+        if(fileName == null || "".equalsIgnoreCase(fileName)){
+            throw new IOException("No file name provided..");
+        }
         deck.createDeckBasedOnFile(fileName);
     }
 
